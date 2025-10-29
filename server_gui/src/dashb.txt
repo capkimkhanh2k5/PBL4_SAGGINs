@@ -1,0 +1,735 @@
+import React, { useState, useEffect } from 'react';
+import { RefreshCw, Search } from 'lucide-react';
+import { dashboardStyles } from './dashboardStyles';
+
+// Extended styles for table view
+const tableStyles = {
+  tabsContainer: {
+    display: 'flex',
+    gap: '10px',
+    marginBottom: '20px',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.3)',
+    paddingBottom: '16px',
+    flexWrap: 'wrap'
+  },
+  tabButton: {
+    padding: '10px 20px',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontWeight: '600',
+    transition: 'all 0.2s',
+    background: 'transparent',
+    color: '#9ca3af',
+    fontSize: '14px'
+  },
+  tabButtonActive: {
+    background: 'rgba(59, 130, 246, 0.3)',
+    border: '1px solid #3b82f6',
+    color: '#93c5fd'
+  },
+  searchContainer: {
+    marginBottom: '20px',
+    display: 'flex',
+    gap: '10px',
+    alignItems: 'center'
+  },
+  searchInput: {
+    flex: 1,
+    padding: '10px 12px',
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.3)',
+    borderRadius: '6px',
+    color: '#ffffff',
+    fontSize: '14px'
+  },
+  searchCount: {
+    color: '#9ca3af',
+    fontSize: '12px'
+  },
+  tableWrapper: {
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '8px',
+    overflow: 'hidden'
+  },
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse'
+  },
+  th: {
+    textAlign: 'left',
+    padding: '12px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.2)',
+    cursor: 'pointer',
+    userSelect: 'none',
+    fontWeight: '600',
+    color: '#bfdbfe'
+  },
+  td: {
+    padding: '12px',
+    borderBottom: '1px solid rgba(75, 85, 99, 0.2)',
+    color: '#d1d5db',
+    fontSize: '13px'
+  },
+  trHover: {
+    background: 'rgba(59, 130, 246, 0.05)'
+  },
+  expandedRow: {
+    padding: '0',
+    borderBottom: 'none'
+  },
+  expandedContent: {
+    padding: '16px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    borderTop: '1px solid rgba(59, 130, 246, 0.2)'
+  },
+  summaryGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '16px'
+  },
+  statCard: {
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '8px',
+    padding: '20px'
+  },
+  statCardTitle: {
+    color: '#9ca3af',
+    fontSize: '12px',
+    marginBottom: '8px',
+    textTransform: 'uppercase'
+  },
+  statCardValue: {
+    color: '#93c5fd',
+    fontSize: '28px',
+    fontWeight: 'bold',
+    margin: '0'
+  },
+  statCardUnit: {
+    color: '#6b7280',
+    fontSize: '11px',
+    marginTop: '6px'
+  },
+  statusBadge: {
+    padding: '4px 12px',
+    borderRadius: '4px',
+    fontSize: '11px',
+    fontWeight: '600'
+  },
+  statusSatisfied: {
+    background: 'rgba(16, 185, 129, 0.2)',
+    color: '#10b981'
+  },
+  statusUnsatisfied: {
+    background: 'rgba(239, 68, 68, 0.2)',
+    color: '#ef4444'
+  }
+};
+
+export default function NetworkResourcesDashboard() {
+  const [envData, setEnvData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [lastUpdate, setLastUpdate] = useState(new Date());
+  const [activeTab, setActiveTab] = useState('summary');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [expandedNode, setExpandedNode] = useState(null);
+  const [expandedConnection, setExpandedConnection] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'asc' });
+
+  useEffect(() => {
+    const fetchEnvResources = async () => {
+      try {
+        setError(null);
+        const response = await fetch('http://localhost:8000/getenvresources');
+        if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
+        const data = await response.json();
+        setEnvData(data);
+        setLastUpdate(new Date());
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching resources:', err);
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchEnvResources();
+    const interval = setInterval(fetchEnvResources, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const getResourceUtilization = (used, total) => {
+    if (total === 0) return 0;
+    return Math.round((used / total) * 100);
+  };
+
+  if (loading) {
+    return (
+      <div style={dashboardStyles.container}>
+        <div style={dashboardStyles.loadingContainer}>
+          <div style={dashboardStyles.spinner} />
+          <p>Loading environment resources...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!envData) return null;
+
+  const satellites = envData?.nodes?.filter(n => n.type === 'satellite') || [];
+  const groundStations = envData?.nodes?.filter(n => n.type === 'groundstation') || [];
+  const seaStations = envData?.nodes?.filter(n => n.type === 'seastation') || [];
+  const connections = envData?.connections || [];
+
+  const getFilteredAndSortedNodes = (nodes) => {
+    let filtered = nodes.filter(n => 
+      n.id.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return filtered.sort((a, b) => {
+      let aVal, bVal;
+
+      // Handle resource utilization sorting
+      if (sortConfig.key === 'uplink_util') {
+        aVal = getResourceUtilization(a.resources_used.uplink, a.resources.uplink);
+        bVal = getResourceUtilization(b.resources_used.uplink, b.resources.uplink);
+      } else if (sortConfig.key === 'downlink_util') {
+        aVal = getResourceUtilization(a.resources_used.downlink, a.resources.downlink);
+        bVal = getResourceUtilization(b.resources_used.downlink, b.resources.downlink);
+      } else if (sortConfig.key === 'cpu_util') {
+        aVal = getResourceUtilization(a.resources_used.cpu, a.resources.cpu);
+        bVal = getResourceUtilization(b.resources_used.cpu, b.resources.cpu);
+      } else if (sortConfig.key === 'power_util') {
+        aVal = getResourceUtilization(a.resources_used.power, a.resources.power);
+        bVal = getResourceUtilization(b.resources_used.power, b.resources.power);
+      } else {
+        aVal = a[sortConfig.key];
+        bVal = b[sortConfig.key];
+      }
+
+      if (typeof aVal === 'string') {
+        aVal = aVal.toLowerCase();
+        bVal = bVal.toLowerCase();
+      }
+
+      if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
+      if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
+      return 0;
+    });
+  };
+
+  const getNodesForTab = () => {
+    switch (activeTab) {
+      case 'satellites':
+        return getFilteredAndSortedNodes(satellites);
+      case 'groundstations':
+        return getFilteredAndSortedNodes(groundStations);
+      case 'seastations':
+        return getFilteredAndSortedNodes(seaStations);
+      default:
+        return [];
+    }
+  };
+
+  const currentNodes = getNodesForTab();
+
+  const handleSort = (key) => {
+    setSortConfig({
+      key,
+      direction: sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc'
+    });
+  };
+
+  return (
+    <div style={dashboardStyles.container}>
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+        .spin-icon { animation: spin 2s linear infinite; }
+      `}</style>
+
+      <div style={dashboardStyles.header}>
+        <h1 style={dashboardStyles.title}>Network Resources Dashboard</h1>
+        <div style={dashboardStyles.stats}>
+          <div style={dashboardStyles.statItem}>
+            <span>Total Nodes: {envData?.nodes?.length || 0}</span>
+          </div>
+          <div style={dashboardStyles.statItem}>
+            <span>Last Update: {lastUpdate.toLocaleTimeString()}</span>
+          </div>
+          <RefreshCw size={20} className="spin-icon" style={{ color: '#3b82f6' }} />
+        </div>
+      </div>
+
+      {error && (
+        <div style={dashboardStyles.warningBanner}>
+          Error: {error}
+        </div>
+      )}
+
+      <div style={dashboardStyles.mainContent}>
+        {/* Tabs */}
+        <div style={tableStyles.tabsContainer}>
+          {[
+            { key: 'summary', label: 'Summary' },
+            { key: 'satellites', label: `Satellites (${satellites.length})` },
+            { key: 'groundstations', label: `Ground Stations (${groundStations.length})` },
+            { key: 'seastations', label: `Sea Stations (${seaStations.length})` },
+            { key: 'connections', label: `Connections (${connections.length})` }
+          ].map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => { setActiveTab(tab.key); setSearchTerm(''); }}
+              style={{
+                ...tableStyles.tabButton,
+                ...(activeTab === tab.key ? tableStyles.tabButtonActive : {})
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Search Bar - Only for node tabs */}
+        {(activeTab === 'satellites' || activeTab === 'groundstations' || activeTab === 'seastations') && (
+          <div style={tableStyles.searchContainer}>
+            <Search size={18} style={{ color: '#9ca3af' }} />
+            <input
+              type="text"
+              placeholder="Search by node ID..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={tableStyles.searchInput}
+            />
+            <span style={tableStyles.searchCount}>
+              {currentNodes.length} of {getNodesForTab().length}
+            </span>
+          </div>
+        )}
+
+        {/* Summary Tab */}
+        {activeTab === 'summary' && (
+          <SummaryTab 
+            satellites={satellites} 
+            groundStations={groundStations} 
+            seaStations={seaStations}
+            connections={connections}
+            getResourceUtilization={getResourceUtilization}
+          />
+        )}
+
+        {/* Connections Tab */}
+        {activeTab === 'connections' && (
+          <ConnectionsTab 
+            connections={connections}
+            expandedConnection={expandedConnection}
+            setExpandedConnection={setExpandedConnection}
+            getResourceUtilization={getResourceUtilization}
+          />
+        )}
+
+        {/* Nodes Tabs */}
+        {(activeTab === 'satellites' || activeTab === 'groundstations' || activeTab === 'seastations') && (
+          <NodesTable
+            nodes={currentNodes}
+            expandedNode={expandedNode}
+            setExpandedNode={setExpandedNode}
+            sortConfig={sortConfig}
+            handleSort={handleSort}
+            activeTab={activeTab}
+            getResourceUtilization={getResourceUtilization}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function NodesTable({ nodes, expandedNode, setExpandedNode, sortConfig, handleSort, activeTab, getResourceUtilization }) {
+  const getColSpan = () => {
+    if (activeTab === 'satellites') return 6;
+    if (activeTab === 'groundstations') return 7;
+    return 6;
+  };
+
+  return (
+    <div style={tableStyles.tableWrapper}>
+      <table style={tableStyles.table}>
+        <thead>
+          <tr>
+            <th style={tableStyles.th} onClick={() => handleSort('id')}>
+              ID {sortConfig.key === 'id' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            </th>
+            {activeTab === 'satellites' && (
+              <th style={tableStyles.th} onClick={() => handleSort('sat_type')}>
+                Type {sortConfig.key === 'sat_type' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+              </th>
+            )}
+            <th style={tableStyles.th}>Position</th>
+            <th style={{ ...tableStyles.th, textAlign: 'center' }} onClick={() => handleSort('uplink_util')}>
+              Uplink {sortConfig.key === 'uplink_util' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            </th>
+            <th style={{ ...tableStyles.th, textAlign: 'center' }} onClick={() => handleSort('downlink_util')}>
+              Downlink {sortConfig.key === 'downlink_util' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            </th>
+            {activeTab === 'groundstations' && (
+              <>
+                <th style={{ ...tableStyles.th, textAlign: 'center' }} onClick={() => handleSort('cpu_util')}>
+                  CPU {sortConfig.key === 'cpu_util' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+                </th>
+                <th style={{ ...tableStyles.th, textAlign: 'center' }} onClick={() => handleSort('power_util')}>
+                  Power {sortConfig.key === 'power_util' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+                </th>
+              </>
+            )}
+            <th style={{ ...tableStyles.th, textAlign: 'center' }}>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {nodes.map(node => {
+            const upUtil = getResourceUtilization(node.resources_used.uplink, node.resources.uplink);
+            const downUtil = getResourceUtilization(node.resources_used.downlink, node.resources.downlink);
+            const cpuUtil = activeTab === 'groundstations' ? getResourceUtilization(node.resources_used.cpu, node.resources.cpu) : 0;
+            const powerUtil = activeTab === 'groundstations' ? getResourceUtilization(node.resources_used.power, node.resources.power) : 0;
+            const isExpanded = expandedNode === node.id;
+
+            return (
+              <React.Fragment key={node.id}>
+                <tr>
+                  <td style={{ ...tableStyles.td, fontWeight: '600', color: '#93c5fd' }}>{node.id}</td>
+                  {activeTab === 'satellites' && <td style={{ ...tableStyles.td, fontSize: '12px', color: '#9ca3af' }}>{node.sat_type}</td>}
+                  <td style={{ ...tableStyles.td, fontSize: '12px' }}>
+                    {node.position.lat.toFixed(2)}°, {node.position.lon.toFixed(2)}°
+                  </td>
+                  <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                    <UtilBar util={upUtil} />
+                  </td>
+                  <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                    <UtilBar util={downUtil} />
+                  </td>
+                  {activeTab === 'groundstations' && (
+                    <>
+                      <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                        <UtilBar util={cpuUtil} />
+                      </td>
+                      <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                        <UtilBar util={powerUtil} />
+                      </td>
+                    </>
+                  )}
+                  <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                    <button
+                      onClick={() => setExpandedNode(isExpanded ? null : node.id)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#3b82f6',
+                        cursor: 'pointer',
+                        fontSize: '18px'
+                      }}
+                    >
+                      {isExpanded ? '▼' : '▶'}
+                    </button>
+                  </td>
+                </tr>
+                {isExpanded && (
+                  <tr>
+                    <td colSpan={getColSpan()} style={{ ...tableStyles.td, ...tableStyles.expandedRow }}>
+                      <div style={tableStyles.expandedContent}>
+                        <h4 style={{ marginTop: '0', marginBottom: '12px', color: '#93c5fd' }}>
+                          {node.id} - Details
+                        </h4>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                          <div>
+                            <p style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '6px', textTransform: 'uppercase' }}>Position</p>
+                            <p style={{ color: '#d1d5db', margin: '0', fontSize: '13px' }}>
+                              {node.position.lat.toFixed(4)}°, {node.position.lon.toFixed(4)}°
+                            </p>
+                            {node.position.alt && (
+                              <p style={{ color: '#9ca3af', margin: '4px 0 0 0', fontSize: '11px' }}>
+                                Altitude: {(node.position.alt / 1000).toFixed(1)} km
+                              </p>
+                            )}
+                          </div>
+                          <ResourceDetail label="Uplink" used={node.resources_used.uplink} total={node.resources.uplink} unit="Mbps" util={upUtil} />
+                          <ResourceDetail label="Downlink" used={node.resources_used.downlink} total={node.resources.downlink} unit="Mbps" util={downUtil} />
+                          {activeTab === 'groundstations' && (
+                            <>
+                              <ResourceDetail label="CPU" used={node.resources_used.cpu} total={node.resources.cpu} unit="cores" util={cpuUtil} />
+                              <ResourceDetail label="Power" used={node.resources_used.power} total={node.resources.power} unit="W" util={powerUtil} />
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function UtilBar({ util }) {
+  const color = util < 50 ? '#10b981' : util < 75 ? '#f59e0b' : '#ef4444';
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+      <div style={{
+        width: '80px',
+        height: '6px',
+        background: 'rgba(0, 0, 0, 0.3)',
+        borderRadius: '3px',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          width: `${Math.min(util, 100)}%`,
+          height: '100%',
+          background: color,
+          transition: 'width 0.3s ease'
+        }} />
+      </div>
+      <span style={{ fontSize: '12px', fontWeight: '600', color, minWidth: '30px' }}>
+        {util}%
+      </span>
+    </div>
+  );
+}
+
+function ResourceDetail({ label, used, total, unit, util }) {
+  const color = util < 50 ? '#10b981' : util < 75 ? '#f59e0b' : '#ef4444';
+  return (
+    <div>
+      <p style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '4px', textTransform: 'uppercase' }}>{label}</p>
+      <p style={{ color, margin: '0', fontWeight: '600' }}>
+        {used.toFixed(2)} / {total.toFixed(2)} {unit}
+      </p>
+      <p style={{ color, margin: '4px 0 0 0', fontSize: '11px' }}>
+        {util}% utilized
+      </p>
+    </div>
+  );
+}
+
+function SummaryTab({ satellites, groundStations, seaStations, connections, getResourceUtilization }) {
+  const allNodes = [...satellites, ...groundStations, ...seaStations];
+  
+  const avgUplink = allNodes.length > 0 
+    ? (allNodes.reduce((sum, n) => sum + n.resources_used.uplink, 0) / allNodes.length).toFixed(2)
+    : 0;
+  const avgDownlink = allNodes.length > 0
+    ? (allNodes.reduce((sum, n) => sum + n.resources_used.downlink, 0) / allNodes.length).toFixed(2)
+    : 0;
+
+  const totalUplink = allNodes.reduce((sum, n) => sum + n.resources_used.uplink, 0).toFixed(2);
+  const totalDownlink = allNodes.reduce((sum, n) => sum + n.resources_used.downlink, 0).toFixed(2);
+  
+  const gsAvgCpu = groundStations.length > 0
+    ? (groundStations.reduce((sum, n) => sum + n.resources_used.cpu, 0) / groundStations.length).toFixed(2)
+    : 0;
+  const gsAvgPower = groundStations.length > 0
+    ? (groundStations.reduce((sum, n) => sum + n.resources_used.power, 0) / groundStations.length).toFixed(2)
+    : 0;
+
+  const satisfiedConnections = connections.filter(conn => {
+    const upSat = conn.uplink_allocated >= conn.uplink_required;
+    const downSat = conn.downlink_allocated >= conn.downlink_required;
+    const latSat = conn.latency_actual <= conn.latency_required;
+    const relSat = conn.reliability_actual >= conn.reliability_required;
+    return upSat && downSat && latSat && relSat;
+  }).length;
+
+  return (
+    <div style={tableStyles.summaryGrid}>
+      <StatCard title="Total Nodes" value={allNodes.length} unit="nodes" />
+      <StatCard title="Satellites" value={satellites.length} unit="LEO/MEO/GEO" />
+      <StatCard title="Ground Stations" value={groundStations.length} unit="stations" />
+      <StatCard title="Sea Stations" value={seaStations.length} unit="stations" />
+      <StatCard title="Active Connections" value={connections.length} unit="requests" />
+      <StatCard 
+        title="QoS Satisfied" 
+        value={`${satisfiedConnections}/${connections.length}`} 
+        unit={`(${connections.length > 0 ? Math.round(satisfiedConnections / connections.length * 100) : 0}%)`}
+      />
+      <StatCard title="Avg Uplink" value={avgUplink} unit="Mbps" />
+      <StatCard title="Avg Downlink" value={avgDownlink} unit="Mbps" />
+      <StatCard title="Total Uplink Used" value={totalUplink} unit="Mbps" />
+      <StatCard title="Total Downlink Used" value={totalDownlink} unit="Mbps" />
+      <StatCard title="Avg GS CPU" value={gsAvgCpu} unit="cores" />
+      <StatCard title="Avg GS Power" value={gsAvgPower} unit="W" />
+    </div>
+  );
+}
+
+function StatCard({ title, value, unit }) {
+  return (
+    <div style={tableStyles.statCard}>
+      <p style={tableStyles.statCardTitle}>{title}</p>
+      <p style={tableStyles.statCardValue}>{value}</p>
+      <p style={tableStyles.statCardUnit}>{unit}</p>
+    </div>
+  );
+}
+
+function ConnectionsTab({ connections, expandedConnection, setExpandedConnection, getResourceUtilization }) {
+  const ServiceTypeNames = {
+    1: 'Voice', 2: 'Video', 3: 'Data', 4: 'IoT',
+    5: 'Streaming', 6: 'Bulk Transfer', 7: 'Control', 8: 'Emergency'
+  };
+
+  // Get nodes by ID for path resource display
+  const [nodeMap, setNodeMap] = useState({});
+
+  return (
+    <div style={tableStyles.tableWrapper}>
+      <table style={tableStyles.table}>
+        <thead>
+          <tr>
+            <th style={tableStyles.th}>Request ID</th>
+            <th style={tableStyles.th}>Type</th>
+            <th style={tableStyles.th}>Source</th>
+            <th style={{ ...tableStyles.th, textAlign: 'center' }}>Priority</th>
+            <th style={{ ...tableStyles.th, textAlign: 'center' }}>Status</th>
+            <th style={{ ...tableStyles.th, textAlign: 'center' }}>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {connections.map((conn, idx) => {
+            const upSat = conn.uplink_allocated >= conn.uplink_required;
+            const downSat = conn.downlink_allocated >= conn.downlink_required;
+            const latSat = conn.latency_actual <= conn.latency_required;
+            const relSat = conn.reliability_actual >= conn.reliability_required;
+            const allSat = upSat && downSat && latSat && relSat;
+            const isExpanded = expandedConnection === idx;
+
+            return (
+              <React.Fragment key={idx}>
+                <tr>
+                  <td style={{ ...tableStyles.td, fontWeight: '600', color: '#93c5fd' }}>{conn.id}</td>
+                  <td style={tableStyles.td}>{ServiceTypeNames[conn.type] || 'Unknown'}</td>
+                  <td style={tableStyles.td}>
+                    {conn.source_location.lat.toFixed(2)}°, {conn.source_location.lon.toFixed(2)}°
+                  </td>
+                  <td style={{ ...tableStyles.td, textAlign: 'center', fontWeight: '600', color: '#93c5fd' }}>
+                    {conn.priority}
+                  </td>
+                  <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                    <span style={{
+                      ...tableStyles.statusBadge,
+                      ...(allSat ? tableStyles.statusSatisfied : tableStyles.statusUnsatisfied)
+                    }}>
+                      {allSat ? '✓ Satisfied' : '✗ Unsatisfied'}
+                    </span>
+                  </td>
+                  <td style={{ ...tableStyles.td, textAlign: 'center' }}>
+                    <button
+                      onClick={() => setExpandedConnection(isExpanded ? null : idx)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#3b82f6',
+                        cursor: 'pointer',
+                        fontSize: '18px'
+                      }}
+                    >
+                      {isExpanded ? '▼' : '▶'}
+                    </button>
+                  </td>
+                </tr>
+                {isExpanded && (
+                  <tr>
+                    <td colSpan="6" style={{ ...tableStyles.td, ...tableStyles.expandedRow }}>
+                      <div style={tableStyles.expandedContent}>
+                        <h4 style={{ marginTop: '0', marginBottom: '12px', color: '#93c5fd' }}>
+                          QoS Details for {conn.id}
+                        </h4>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                          <QoSDetail label="Uplink" required={conn.uplink_required} allocated={conn.uplink_allocated} unit="Mbps" isSatisfied={upSat} />
+                          <QoSDetail label="Downlink" required={conn.downlink_required} allocated={conn.downlink_allocated} unit="Mbps" isSatisfied={downSat} />
+                          <QoSDetail label="Latency" required={conn.latency_required} allocated={conn.latency_actual} unit="ms" isSatisfied={latSat} isLatency={true} />
+                          <QoSDetail label="Reliability" required={conn.reliability_required} allocated={conn.reliability_actual} unit="" isSatisfied={relSat} />
+                          <QoSDetail label="CPU" required={conn.cpu_required} allocated={conn.cpu_allocated} unit="cores" isSatisfied={conn.cpu_allocated >= conn.cpu_required} />
+                          <QoSDetail label="Power" required={conn.power_required} allocated={conn.power_allocated} unit="W" isSatisfied={conn.power_allocated >= conn.power_required} />
+                        </div>
+
+                        {conn.path && conn.path.length > 0 && (
+                          <div style={{ marginTop: '20px' }}>
+                            <h5 style={{ margin: '0 0 12px 0', color: '#bfdbfe', fontSize: '13px', textTransform: 'uppercase' }}>
+                              Path: {conn.path.join(' → ')}
+                            </h5>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+                              {conn.path.map((nodeId) => (
+                                <PathNodeInfo key={nodeId} nodeId={nodeId} />
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function QoSDetail({ label, required, allocated, unit, isSatisfied }) {
+  const color = isSatisfied ? '#10b981' : '#ef4444';
+  return (
+    <div>
+      <p style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '6px', textTransform: 'uppercase' }}>
+        {label}
+      </p>
+      <p style={{ color: '#d1d5db', margin: '0', fontSize: '13px' }}>
+        Required: <span style={{ color: '#93c5fd', fontWeight: '600' }}>{required.toFixed(2)}</span> {unit}
+      </p>
+      <p style={{ color, margin: '4px 0 0 0', fontSize: '13px', fontWeight: '600' }}>
+        Allocated: {allocated.toFixed(2)} {unit}
+      </p>
+      <p style={{ color, margin: '4px 0 0 0', fontSize: '11px' }}>
+        {isSatisfied ? 'âœ" Satisfied' : 'âœ— Unsatisfied'}
+      </p>
+    </div>
+  );
+}
+
+function PathNodeInfo({ nodeId, index, totalNodes }) {
+  return (
+    <div style={{
+      background: 'rgba(0, 0, 0, 0.2)',
+      border: '1px solid rgba(59, 130, 246, 0.2)',
+      borderRadius: '6px',
+      padding: '12px',
+      position: 'relative'
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <p style={{ color: '#93c5fd', fontSize: '12px', fontWeight: '600', margin: '0' }}>
+          {nodeId}
+        </p>
+        <span style={{ 
+          color: '#6b7280', 
+          fontSize: '10px', 
+          background: 'rgba(59, 130, 246, 0.2)',
+          padding: '2px 6px',
+          borderRadius: '4px'
+        }}>
+          #{index + 1}
+        </span>
+      </div>
+      <p style={{ color: '#9ca3af', fontSize: '11px', margin: '4px 0 0 0' }}>
+        {index === 0 ? 'Source' : index === totalNodes - 1 ? 'Destination' : 'Hop'}
+      </p>
+    </div>
+  );
+}

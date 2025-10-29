@@ -1,0 +1,370 @@
+export const dashboardStyles = {
+  container: {
+    minHeight: '100vh',
+    background: 'linear-gradient(to bottom right, #111827, #1e3a8a, #111827)',
+    color: '#ffffff',
+    fontFamily: 'system-ui, -apple-system, sans-serif',
+    padding: '20px',
+    overflowY: 'auto'
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '30px',
+    padding: '20px',
+    background: 'rgba(0, 0, 0, 0.4)',
+    borderRadius: '12px',
+    border: '1px solid rgba(59, 130, 246, 0.3)',
+    backdropFilter: 'blur(10px)'
+  },
+  title: {
+    margin: 0,
+    fontSize: '28px',
+    fontWeight: 'bold',
+    color: '#93c5fd'
+  },
+  stats: {
+    display: 'flex',
+    gap: '20px',
+    alignItems: 'center'
+  },
+  statItem: {
+    fontSize: '14px',
+    color: '#bfdbfe',
+    padding: '8px 16px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    borderRadius: '6px',
+    border: '1px solid rgba(59, 130, 246, 0.3)'
+  },
+  mainContent: {
+    maxWidth: '1600px',
+    margin: '0 auto'
+  },
+  section: {
+    marginBottom: '40px'
+  },
+  sectionTitle: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#bfdbfe',
+    marginBottom: '16px',
+    borderBottom: '2px solid rgba(59, 130, 246, 0.3)',
+    paddingBottom: '12px'
+  },
+  nodesGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '16px'
+  },
+  nodeCard: {
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    transition: 'all 0.3s ease',
+    backdropFilter: 'blur(10px)'
+  },
+  nodeCardHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '16px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    cursor: 'pointer',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.2)',
+    transition: 'background 0.2s'
+  },
+  nodeCardTitle: {
+    margin: '0 0 4px 0',
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#93c5fd'
+  },
+  nodeCardType: {
+    margin: 0,
+    fontSize: '12px',
+    color: '#9ca3af'
+  },
+  nodeCardDetails: {
+    padding: '16px'
+  },
+  positionInfo: {
+    marginBottom: '16px',
+    padding: '12px',
+    background: 'rgba(0, 0, 0, 0.2)',
+    borderRadius: '6px',
+    fontSize: '12px'
+  },
+  resourcesGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '12px'
+  },
+  resourceBarContainer: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '6px'
+  },
+  resourceBarLabel: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '12px',
+    color: '#d1d5db'
+  },
+  resourceBarBackground: {
+    height: '8px',
+    background: 'rgba(0, 0, 0, 0.3)',
+    borderRadius: '4px',
+    overflow: 'hidden'
+  },
+  resourceBarFill: {
+    height: '100%',
+    transition: 'width 0.3s ease'
+  },
+  connectionsContainer: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+    gap: '16px'
+  },
+  connectionCard: {
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    transition: 'all 0.3s ease',
+    backdropFilter: 'blur(10px)'
+  },
+  connectionCardHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '16px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    cursor: 'pointer',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.2)',
+    transition: 'background 0.2s'
+  },
+  connectionTitle: {
+    margin: '0 0 4px 0',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#93c5fd'
+  },
+  connectionSubtitle: {
+    margin: 0,
+    fontSize: '11px',
+    color: '#9ca3af'
+  },
+  connectionDetails: {
+    padding: '16px'
+  },
+  detailsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '12px',
+    marginBottom: '16px',
+    paddingBottom: '16px',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.2)'
+  },
+  detailItemContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px'
+  },
+  detailItemLabel: {
+    fontSize: '11px',
+    color: '#9ca3af',
+    fontWeight: '500'
+  },
+  detailItemValue: {
+    fontSize: '14px',
+    color: '#93c5fd',
+    fontWeight: '600'
+  },
+  qosGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '12px'
+  },
+  qosItemContainer: {
+    background: 'rgba(0, 0, 0, 0.2)',
+    padding: '12px',
+    borderRadius: '6px',
+    border: '1px solid rgba(59, 130, 246, 0.15)'
+  },
+  qosItemLabel: {
+    fontSize: '11px',
+    fontWeight: '600',
+    color: '#bfdbfe',
+    marginBottom: '8px'
+  },
+  qosItemRow: {
+    fontSize: '11px',
+    color: '#d1d5db',
+    marginBottom: '4px'
+  },
+  qosItemText: {
+    color: '#d1d5db',
+    fontSize: '11px'
+  },
+  emptyState: {
+    textAlign: 'center',
+    color: '#9ca3af',
+    padding: '40px 20px',
+    fontSize: '14px'
+  },
+  warningBanner: {
+    padding: '16px',
+    background: 'rgba(239, 68, 68, 0.1)',
+    border: '1px solid rgba(239, 68, 68, 0.3)',
+    borderRadius: '8px',
+    color: '#fca5a5',
+    marginBottom: '20px',
+    fontSize: '14px'
+  },
+  loadingContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    gap: '20px'
+  },
+  spinner: {
+    width: '50px',
+    height: '50px',
+    border: '4px solid rgba(59, 130, 246, 0.3)',
+    borderTop: '4px solid #3b82f6',
+    borderRadius: '50%',
+    animation: 'spin 1s linear infinite'
+  }
+};
+
+// Extended styles for table view
+export const tableStyles = {
+  tabsContainer: {
+    display: 'flex',
+    gap: '10px',
+    marginBottom: '20px',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.3)',
+    paddingBottom: '16px',
+    flexWrap: 'wrap'
+  },
+  tabButton: {
+    padding: '10px 20px',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontWeight: '600',
+    transition: 'all 0.2s',
+    background: 'transparent',
+    color: '#9ca3af',
+    fontSize: '14px'
+  },
+  tabButtonActive: {
+    background: 'rgba(59, 130, 246, 0.3)',
+    border: '1px solid #3b82f6',
+    color: '#93c5fd'
+  },
+  searchContainer: {
+    marginBottom: '20px',
+    display: 'flex',
+    gap: '10px',
+    alignItems: 'center'
+  },
+  searchInput: {
+    flex: 1,
+    padding: '10px 12px',
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.3)',
+    borderRadius: '6px',
+    color: '#ffffff',
+    fontSize: '14px'
+  },
+  searchCount: {
+    color: '#9ca3af',
+    fontSize: '12px'
+  },
+  tableWrapper: {
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '8px',
+    overflow: 'hidden'
+  },
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse'
+  },
+  th: {
+    textAlign: 'left',
+    padding: '12px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    borderBottom: '1px solid rgba(59, 130, 246, 0.2)',
+    cursor: 'pointer',
+    userSelect: 'none',
+    fontWeight: '600',
+    color: '#bfdbfe'
+  },
+  td: {
+    padding: '12px',
+    borderBottom: '1px solid rgba(75, 85, 99, 0.2)',
+    color: '#d1d5db',
+    fontSize: '13px'
+  },
+  trHover: {
+    background: 'rgba(59, 130, 246, 0.05)'
+  },
+  expandedRow: {
+    padding: '0',
+    borderBottom: 'none'
+  },
+  expandedContent: {
+    padding: '16px',
+    background: 'rgba(59, 130, 246, 0.1)',
+    borderTop: '1px solid rgba(59, 130, 246, 0.2)'
+  },
+  summaryGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '16px'
+  },
+  statCard: {
+    background: 'rgba(31, 41, 55, 0.6)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    borderRadius: '8px',
+    padding: '20px'
+  },
+  statCardTitle: {
+    color: '#9ca3af',
+    fontSize: '12px',
+    marginBottom: '8px',
+    textTransform: 'uppercase'
+  },
+  statCardValue: {
+    color: '#93c5fd',
+    fontSize: '28px',
+    fontWeight: 'bold',
+    margin: '0'
+  },
+  statCardUnit: {
+    color: '#6b7280',
+    fontSize: '11px',
+    marginTop: '6px'
+  },
+  statusBadge: {
+    padding: '4px 12px',
+    borderRadius: '4px',
+    fontSize: '11px',
+    fontWeight: '600'
+  },
+  statusSatisfied: {
+    background: 'rgba(16, 185, 129, 0.2)',
+    color: '#10b981'
+  },
+  statusUnsatisfied: {
+    background: 'rgba(239, 68, 68, 0.2)',
+    color: '#ef4444'
+  }
+};

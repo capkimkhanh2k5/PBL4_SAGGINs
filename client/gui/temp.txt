@@ -1,0 +1,58 @@
+const GEO_SATELLITES = [
+  { 
+    id: 'GEO-01',
+    type: 'satellite',
+    sat_type: 'GEO',
+    position: { lat: 0, lon: -75, alt: 3000000 },
+    orbit: { inclination: 0, raan: 0, period: 86164, eccentricity: 0.0001 },
+    velocity: { vx: 0, vy: 0, vz: 0 },
+    orbit_state: { last_theta: 0 }
+  },
+  { 
+    id: 'GEO-02',
+    type: 'satellite',
+    sat_type: 'GEO',
+    position: { lat: 0, lon: 60, alt: 3000000 },
+    orbit: { inclination: 0, raan: 0, period: 86164, eccentricity: 0.0001 },
+    velocity: { vx: 0, vy: 0, vz: 0 },
+    orbit_state: { last_theta: 0 }
+  }
+];
+
+const INITIAL_NODES = [
+  { id: 'GS-NYC', type: 'groundstation', position: {lat: 40.7128, lon: -74.0060, alt: 0} },
+  { id: 'GS-LON', type: 'groundstation', position:{lat: 51.5074, lon: -0.1278, alt:0}},
+  { id: 'GS-TKY', type: 'groundstation', position:{lat: 35.6762, lon: 139.6503, alt: 0}},
+  { id: 'GS-SYD', type: 'groundstation', position:{lat: -33.8688, lon: 151.2093, alt: 0}},
+  { 
+    id: 'LEO-41', 
+    type: 'satellite',
+    sat_type: 'LEO',
+    name: 'Beijing',
+    position: { lat: 39.9, lon: 116.4, alt: 525000 },
+    orbit: { inclination: 87.5, raan: 130, period: 5400, eccentricity: 0.0006 },
+    velocity: { vx: -5120, vy: 2950, vz: 400 },
+    orbit_state: { last_theta: 0.93 }
+  },
+  { 
+    id: 'SAT-02', 
+    type: 'satellite',
+    sat_type: 'LEO',
+    position: { lat: 30.0, lon: 20.0, alt: 550000 },
+    orbit: { inclination: 53.0, raan: 45, period: 5700, eccentricity: 0.0005 },
+    velocity: { vx: -4800, vy: 3200, vz: 350 },
+    orbit_state: { last_theta: 1.2 }
+  },
+  { 
+    id: 'SAT-03', 
+    type: 'satellite',
+    sat_type: 'LEO',
+    position: { lat: -10.0, lon: 140.0, alt: 580000 },
+    orbit: { inclination: 97.8, raan: 200, period: 5850, eccentricity: 0.0007 },
+    velocity: { vx: -5300, vy: 2700, vz: 420 },
+    orbit_state: { last_theta: 0.5 }
+  },
+  { id: 'SEA-ATL', type: 'seastation', position:{lat: 28.0, lon: -45.0, alt: 0}},
+  { id: 'SEA-PAC', type: 'seastation', position: {lat: 15.0, lon: -160.0, alt: 0}},
+  ...GEO_SATELLITES
+];
