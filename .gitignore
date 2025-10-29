@@ -1,0 +1,15 @@
+# Large/binary
+*.pkl
+*.pt
+*.npy
+*.h5
+*.bin
+*.ckpt
+__pycache__/
+*.log
+
+# Common outputs
+outputs/
+checkpoints/
+datasets/
+logs/
