@@ -121,8 +121,11 @@ async def lifespan(app: FastAPI):
     network = Network()
     env = SagsEnv()
     stats_manager = StatsManager()
+
+    #edit AI here!
     model = QRDQN.load("qrdqn_model", env=env, device="auto")
     model.load_replay_buffer("qrdqn_buffer")
+
     start_ai_worker()
 
     # Yield control back to FastAPI (this keeps the app running)

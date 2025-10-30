@@ -866,7 +866,7 @@ function NetworkVisualizer() {
     if (autoGen) {
       interval = setInterval(() => {
         handleGenerateRequest();
-      }, 3000);
+      }, 50);
     }
     return () => clearInterval(interval);
   }, [autoGen, handleGenerateRequest]);
