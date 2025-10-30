@@ -123,8 +123,8 @@ async def lifespan(app: FastAPI):
     stats_manager = StatsManager()
 
     #edit AI here!
-    model = QRDQN.load("qrdqn_model", env=env, device="auto")
-    model.load_replay_buffer("qrdqn_buffer")
+    model = QRDQN.load("AI_STRESS/qrdqn_model", env=env, device="auto")
+    model.load_replay_buffer("AI_STRESS/qrdqn_buffer")
 
     start_ai_worker()
 
