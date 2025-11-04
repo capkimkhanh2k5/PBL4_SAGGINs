@@ -6,7 +6,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.logger import configure
 from stable_baselines3.common.buffers import ReplayBuffer
-from stress import SagsEnv
+from Environment import SagsEnv
 
 
 # =====================================================
@@ -21,6 +21,11 @@ class RewardLoggingCallback(BaseCallback):
         self.running_reward = 0.0
         self.running_qscore = 0.0
         self.running_qos = {"latency" : 0.0, "reliability": 0.0, "uplink": 0.0, "downlink": 0.0, "timeout" : 0.0}
+
+        #add history proof AI more inteligent (have learn)
+        self.episode_rewards = []
+        self.episode_scores = []
+        self.episode_qscores = []
 
     def _on_step(self) -> bool:
         # Get 'infos' and 'dones' from the current step
@@ -42,6 +47,11 @@ class RewardLoggingCallback(BaseCallback):
                 self.running_reward += (reward - self.running_reward) / self.total_eps
                 self.running_qscore += (qscore - self.running_qscore) / self.total_eps
 
+                # Append to history
+                self.episode_rewards.append(reward)
+                self.episode_scores.append(score)
+                self.episode_qscores.append(qscore)
+
                 if self.total_eps % self.print_freq == 0:
                     print(f"[Episode {self.total_eps}] Success rate: {self.running_mean * 100:.2f}%")
                     print(f"  Average Reward: {self.running_reward:.2f}")
@@ -50,6 +60,19 @@ class RewardLoggingCallback(BaseCallback):
 
         return True
 
+    #Save into file CSV
+    def save_logs(self, filename="training_logs.csv"):
+        import pandas as pd
+        
+        df = pd.DataFrame({
+            "episode": range(1, len(self.episode_rewards) + 1),
+            "reward": self.episode_rewards,
+            "success_rate": self.episode_scores,
+            "qscore": self.episode_qscores
+        })
+        
+        df.to_csv(filename, index=False)
+        print(f"✅ Logs saved to {filename}")
 
 # =====================================================
 # 🧩 Replay Buffer Trimmer
@@ -176,6 +199,10 @@ def continue_training(trim_ratio=None, new_buffer_size=None):
     # ======== Save Updated Model ==========
     model.save("qrdqn_model")
     model.save_replay_buffer("qrdqn_buffer")
+
+    # Save File CSV AI LEARN
+    callback.save_logs("training_logs.csv")
+
     print("✅ Continued training finished and model saved.")
 
 

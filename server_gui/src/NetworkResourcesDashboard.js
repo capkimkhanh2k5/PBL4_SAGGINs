@@ -1163,7 +1163,8 @@ function AggregateStatsTab() {
               dataKey="agent" 
               stroke="#10b981"
               fill="#10b981"
-              fillOpacity={0.6}
+              fillOpacity={0.25}
+              strokeWidth={2}
             />
 
             {/* Dijkstra */}
@@ -1172,7 +1173,8 @@ function AggregateStatsTab() {
               dataKey="dijkstra" 
               stroke="#ef4444"  
               fill="#ef4444"    
-              fillOpacity={0.6}
+              fillOpacity={0.25}
+              strokeWidth={2}
             />
             {/* Chú thích */}
             <Legend />

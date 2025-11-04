@@ -28,8 +28,8 @@ class SagsEnv(gym.Env):
         self.path_log_file = f"paths_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
         self.step_log_file = f"steps_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
         self.release_log_file = f"release_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-        with open(self.path_log_file, "w") as f:
-            f.write("=== SAGs Environment Path Log ===\n\n")
+        # with open(self.path_log_file, "w") as f:
+        #     f.write("=== SAGs Environment Path Log ===\n\n")
         # with open(self.step_log_file, "w") as f:
         #     f.write("=== SAGs Environment Step Log ===\n\n")
         # with open(self.release_log_file, "w") as f:
@@ -100,9 +100,6 @@ class SagsEnv(gym.Env):
         self._log_score = 0
         self._new_request()
         obs = self._get_obs()
-        while self.neighbor_ids[0] is None:
-            self._new_request()
-            obs = self._get_obs()
         return obs, {}
     
     #Tạo request
@@ -124,7 +121,7 @@ class SagsEnv(gym.Env):
         cpu_required = random.randint(*QoSProfiles_service["cpu"])
         power_required = random.randint(*QoSProfiles_service["power"])
         packet_size = random.randint(1, 100)  # MB
-        demand_timeout = random.randint(100, 5000)  # episode
+        demand_timeout = random.randint(100, 4000)  # episode
         priority = random.randint(*QoSProfiles_service["priority"])
         new_request = request(
             request_id=self.count,
@@ -583,7 +580,7 @@ class SagsEnv(gym.Env):
                 if node:
                     node.allocate_resource(self.current_request)
             self.count += 1
-            self.log_path()
+            # self.log_path()
             return obs, reward, True, False, info
     
     def log_path(self, success = True):
