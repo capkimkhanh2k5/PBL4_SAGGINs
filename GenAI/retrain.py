@@ -6,7 +6,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.logger import configure
 from stable_baselines3.common.buffers import ReplayBuffer
-from Environment import SagsEnv
+from stress import SagsEnv
 
 
 # =====================================================
@@ -167,7 +167,7 @@ def continue_training(trim_ratio=None, new_buffer_size=None):
     print("Continuing training...")
 
     model.learn(
-        total_timesteps=50000,
+        total_timesteps=70000,
         callback=callback,
         log_interval=10000,
         reset_num_timesteps=False,
