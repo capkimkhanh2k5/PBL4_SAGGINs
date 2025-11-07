@@ -3,7 +3,7 @@ import random
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../Classes')))
-from request import ServiceType
+from Classes.request import ServiceType
 
 C = 3e8
 

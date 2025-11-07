@@ -7,13 +7,13 @@ import numpy as np
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../Classes')))
-from satellite import Satellite
-from gs import Gs
-from ss import Ss
-from network import Network
-from request import ServiceType, request
-from GroundSpace import GroundSpace
-from node import node
+from Classes.satellite import Satellite
+from Classes.gs import Gs
+from Classes.ss import Ss
+from Classes.network import Network
+from Classes.request import ServiceType, request
+from Classes.GroundSpace import GroundSpace
+from Classes.node import node
 from enum import Enum, auto
 import math
 import random
