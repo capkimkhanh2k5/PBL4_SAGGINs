@@ -1,0 +1,210 @@
+[{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766ad"
+  },
+  "ss_id": "SS_BienDong",
+  "location": {
+    "lat": 15,
+    "lon": 112
+  },
+  "coverage_radius_km": 800,
+  "resources": {
+    "cpu": 400,
+    "power": 600,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766ae"
+  },
+  "ss_id": "SS_IndianOcean",
+  "location": {
+    "lat": -5,
+    "lon": 75
+  },
+  "coverage_radius_km": 1000,
+  "resources": {
+    "cpu": 500,
+    "power": 700,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766af"
+  },
+  "ss_id": "SS_Atlantic",
+  "location": {
+    "lat": 20,
+    "lon": -40
+  },
+  "coverage_radius_km": 1000,
+  "resources": {
+    "cpu": 500,
+    "power": 700,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b0"
+  },
+  "ss_id": "SS_Pacific",
+  "location": {
+    "lat": 0,
+    "lon": -160
+  },
+  "coverage_radius_km": 1200,
+  "resources": {
+    "cpu": 600,
+    "power": 800,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b1"
+  },
+  "ss_id": "SS_SouthPacific",
+  "location": {
+    "lat": -20,
+    "lon": -150
+  },
+  "coverage_radius_km": 1200,
+  "resources": {
+    "cpu": 600,
+    "power": 800,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b2"
+  },
+  "ss_id": "SS_NorthAtlantic",
+  "location": {
+    "lat": 45,
+    "lon": -30
+  },
+  "coverage_radius_km": 1000,
+  "resources": {
+    "cpu": 500,
+    "power": 700,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b3"
+  },
+  "ss_id": "SS_SouthAtlantic",
+  "location": {
+    "lat": -30,
+    "lon": -10
+  },
+  "coverage_radius_km": 1000,
+  "resources": {
+    "cpu": 500,
+    "power": 700,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b4"
+  },
+  "ss_id": "SS_SouthIndianOcean",
+  "location": {
+    "lat": -25,
+    "lon": 90
+  },
+  "coverage_radius_km": 1000,
+  "resources": {
+    "cpu": 500,
+    "power": 700,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b5"
+  },
+  "ss_id": "SS_NorthPacific",
+  "location": {
+    "lat": 35,
+    "lon": -140
+  },
+  "coverage_radius_km": 1200,
+  "resources": {
+    "cpu": 600,
+    "power": 800,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+},
+{
+  "_id": {
+    "$oid": "68bd7e007dede9520fc766b6"
+  },
+  "ss_id": "SS_Caribbean",
+  "location": {
+    "lat": 15,
+    "lon": -70
+  },
+  "coverage_radius_km": 800,
+  "resources": {
+    "cpu": 400,
+    "power": 600,
+    "downlink": 4000,
+    "isl": 1000,
+    "uplink": 1600
+  },
+  "status": "active",
+  "connected_satellites": [],
+  "connected_users": []
+}]

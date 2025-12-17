@@ -1,0 +1,1200 @@
+[{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe989"
+  },
+  "uav_id": "UAV-001",
+  "name": "Hanoi_Alpha",
+  "location": {
+    "lat": 21.0285,
+    "lon": 105.8542,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe98a"
+  },
+  "uav_id": "UAV-002",
+  "name": "HCMC_Beta",
+  "location": {
+    "lat": 10.7769,
+    "lon": 106.7009,
+    "alt": 4800
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe98b"
+  },
+  "uav_id": "UAV-003",
+  "name": "Beijing_Gamma",
+  "location": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt": 5200
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe98c"
+  },
+  "uav_id": "UAV-004",
+  "name": "Shanghai_Delta",
+  "location": {
+    "lat": 31.2304,
+    "lon": 121.4737,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe98d"
+  },
+  "uav_id": "UAV-005",
+  "name": "Tokyo_Echo",
+  "location": {
+    "lat": 35.6895,
+    "lon": 139.6917,
+    "alt": 5100
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 65,
+    "bandwidth": 650,
+    "power": 2300,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe98e"
+  },
+  "uav_id": "UAV-006",
+  "name": "Seoul_Foxtrot",
+  "location": {
+    "lat": 37.5665,
+    "lon": 126.978,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe98f"
+  },
+  "uav_id": "UAV-007",
+  "name": "Mumbai_Golf",
+  "location": {
+    "lat": 19.076,
+    "lon": 72.8777,
+    "alt": 4900
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe990"
+  },
+  "uav_id": "UAV-008",
+  "name": "Delhi_Hotel",
+  "location": {
+    "lat": 28.6139,
+    "lon": 77.209,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe991"
+  },
+  "uav_id": "UAV-009",
+  "name": "Bangkok_India",
+  "location": {
+    "lat": 13.7563,
+    "lon": 100.5018,
+    "alt": 4800
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe992"
+  },
+  "uav_id": "UAV-010",
+  "name": "Singapore_Juliet",
+  "location": {
+    "lat": 1.3521,
+    "lon": 103.8198,
+    "alt": 4500
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 45,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe993"
+  },
+  "uav_id": "UAV-011",
+  "name": "Sydney_Kilo",
+  "location": {
+    "lat": -33.8688,
+    "lon": 151.2093,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe994"
+  },
+  "uav_id": "UAV-012",
+  "name": "Melbourne_Lima",
+  "location": {
+    "lat": -37.8136,
+    "lon": 144.9631,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe995"
+  },
+  "uav_id": "UAV-013",
+  "name": "Dubai_Mike",
+  "location": {
+    "lat": 25.2769,
+    "lon": 55.2962,
+    "alt": 5200
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe996"
+  },
+  "uav_id": "UAV-014",
+  "name": "Riyadh_November",
+  "location": {
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "alt": 5500
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 70,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe997"
+  },
+  "uav_id": "UAV-015",
+  "name": "Cairo_Oscar",
+  "location": {
+    "lat": 30.0444,
+    "lon": 31.2357,
+    "alt": 5100
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe998"
+  },
+  "uav_id": "UAV-016",
+  "name": "Lagos_Papa",
+  "location": {
+    "lat": 6.5244,
+    "lon": 3.3792,
+    "alt": 4800
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe999"
+  },
+  "uav_id": "UAV-017",
+  "name": "Nairobi_Quebec",
+  "location": {
+    "lat": -1.2921,
+    "lon": 36.8219,
+    "alt": 5300
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe99a"
+  },
+  "uav_id": "UAV-018",
+  "name": "CapeTown_Romeo",
+  "location": {
+    "lat": -33.9249,
+    "lon": 18.4241,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe99b"
+  },
+  "uav_id": "UAV-019",
+  "name": "London_Sierra",
+  "location": {
+    "lat": 51.5074,
+    "lon": -0.1278,
+    "alt": 4900
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 65,
+    "bandwidth": 650,
+    "power": 2300,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe99c"
+  },
+  "uav_id": "UAV-020",
+  "name": "Paris_Tango",
+  "location": {
+    "lat": 48.8566,
+    "lon": 2.3522,
+    "alt": 4900
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe99d"
+  },
+  "uav_id": "UAV-021",
+  "name": "Berlin_Uniform",
+  "location": {
+    "lat": 52.52,
+    "lon": 13.405,
+    "alt": 4950
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe99e"
+  },
+  "uav_id": "UAV-022",
+  "name": "Rome_Victor",
+  "location": {
+    "lat": 41.9028,
+    "lon": 12.4964,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe99f"
+  },
+  "uav_id": "UAV-023",
+  "name": "Madrid_Whiskey",
+  "location": {
+    "lat": 40.4168,
+    "lon": -3.7038,
+    "alt": 5200
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a0"
+  },
+  "uav_id": "UAV-024",
+  "name": "Moscow_Xray",
+  "location": {
+    "lat": 55.7558,
+    "lon": 37.6173,
+    "alt": 5300
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 65,
+    "bandwidth": 650,
+    "power": 2300,
+    "memory": 32768
+  },
+  "coverage_radius_km": 65,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a1"
+  },
+  "uav_id": "UAV-025",
+  "name": "Istanbul_Yankee",
+  "location": {
+    "lat": 41.0082,
+    "lon": 28.9784,
+    "alt": 5100
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a2"
+  },
+  "uav_id": "UAV-026",
+  "name": "NewYork_Zulu",
+  "location": {
+    "lat": 40.7128,
+    "lon": -74.006,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 70,
+    "bandwidth": 700,
+    "power": 2400,
+    "memory": 65536
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a3"
+  },
+  "uav_id": "UAV-027",
+  "name": "LosAngeles_Alpha2",
+  "location": {
+    "lat": 34.0522,
+    "lon": -118.2437,
+    "alt": 5100
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 65,
+    "bandwidth": 650,
+    "power": 2300,
+    "memory": 32768
+  },
+  "coverage_radius_km": 65,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a4"
+  },
+  "uav_id": "UAV-028",
+  "name": "Chicago_Beta2",
+  "location": {
+    "lat": 41.8781,
+    "lon": -87.6298,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a5"
+  },
+  "uav_id": "UAV-029",
+  "name": "Houston_Gamma2",
+  "location": {
+    "lat": 29.7604,
+    "lon": -95.3698,
+    "alt": 4900
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a6"
+  },
+  "uav_id": "UAV-030",
+  "name": "Miami_Delta2",
+  "location": {
+    "lat": 25.7617,
+    "lon": -80.1918,
+    "alt": 4700
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a7"
+  },
+  "uav_id": "UAV-031",
+  "name": "Toronto_Echo2",
+  "location": {
+    "lat": 43.6532,
+    "lon": -79.3832,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 60,
+    "bandwidth": 600,
+    "power": 2200,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a8"
+  },
+  "uav_id": "UAV-032",
+  "name": "Vancouver_Foxtrot2",
+  "location": {
+    "lat": 49.2827,
+    "lon": -123.1207,
+    "alt": 5200
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9a9"
+  },
+  "uav_id": "UAV-033",
+  "name": "SaoPaulo_Golf2",
+  "location": {
+    "lat": -23.5505,
+    "lon": -46.6333,
+    "alt": 5100
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9aa"
+  },
+  "uav_id": "UAV-034",
+  "name": "BuenosAires_Hotel2",
+  "location": {
+    "lat": -34.6037,
+    "lon": -58.3816,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9ab"
+  },
+  "uav_id": "UAV-035",
+  "name": "Lima_India2",
+  "location": {
+    "lat": -12.0464,
+    "lon": -77.0428,
+    "alt": 5400
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9ac"
+  },
+  "uav_id": "UAV-036",
+  "name": "Bogota_Juliet2",
+  "location": {
+    "lat": 4.711,
+    "lon": -74.0721,
+    "alt": 6200
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9ad"
+  },
+  "uav_id": "UAV-037",
+  "name": "MexicoCity_Kilo2",
+  "location": {
+    "lat": 19.4326,
+    "lon": -99.1332,
+    "alt": 6000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 55,
+    "bandwidth": 550,
+    "power": 2100,
+    "memory": 32768
+  },
+  "coverage_radius_km": 65,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9ae"
+  },
+  "uav_id": "UAV-038",
+  "name": "Jakarta_Lima2",
+  "location": {
+    "lat": -6.2088,
+    "lon": 106.8456,
+    "alt": 4800
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9af"
+  },
+  "uav_id": "UAV-039",
+  "name": "Manila_Mike2",
+  "location": {
+    "lat": 14.5995,
+    "lon": 120.9842,
+    "alt": 4700
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b0"
+  },
+  "uav_id": "UAV-040",
+  "name": "Karachi_November2",
+  "location": {
+    "lat": 24.8607,
+    "lon": 67.0011,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 55,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b1"
+  },
+  "uav_id": "UAV-041",
+  "name": "Dhaka_Oscar2",
+  "location": {
+    "lat": 23.8103,
+    "lon": 90.4125,
+    "alt": 4600
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b2"
+  },
+  "uav_id": "UAV-042",
+  "name": "Yangon_Papa2",
+  "location": {
+    "lat": 16.8661,
+    "lon": 96.1951,
+    "alt": 4700
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 50,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b3"
+  },
+  "uav_id": "UAV-043",
+  "name": "Almaty_Quebec2",
+  "location": {
+    "lat": 43.222,
+    "lon": 76.8512,
+    "alt": 5800
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 70,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b4"
+  },
+  "uav_id": "UAV-044",
+  "name": "Tashkent_Romeo2",
+  "location": {
+    "lat": 41.2995,
+    "lon": 69.2401,
+    "alt": 5500
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 65,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b5"
+  },
+  "uav_id": "UAV-045",
+  "name": "Tehran_Sierra2",
+  "location": {
+    "lat": 35.6892,
+    "lon": 51.389,
+    "alt": 5400
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b6"
+  },
+  "uav_id": "UAV-046",
+  "name": "Kabul_Tango2",
+  "location": {
+    "lat": 34.5553,
+    "lon": 69.2075,
+    "alt": 6500
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b7"
+  },
+  "uav_id": "UAV-047",
+  "name": "Addis_Uniform2",
+  "location": {
+    "lat": 9.145,
+    "lon": 40.4897,
+    "alt": 6800
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 65,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b8"
+  },
+  "uav_id": "UAV-048",
+  "name": "Khartoum_Victor2",
+  "location": {
+    "lat": 15.5007,
+    "lon": 32.5599,
+    "alt": 5200
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 45,
+    "bandwidth": 450,
+    "power": 1900,
+    "memory": 16384
+  },
+  "coverage_radius_km": 65,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9b9"
+  },
+  "uav_id": "UAV-049",
+  "name": "Casablanca_Whiskey2",
+  "location": {
+    "lat": 33.5731,
+    "lon": -7.5898,
+    "alt": 5000
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 50,
+    "bandwidth": 500,
+    "power": 2000,
+    "memory": 16384
+  },
+  "coverage_radius_km": 60,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+},
+{
+  "_id": {
+    "$oid": "68c03b88c58449eb53cfe9ba"
+  },
+  "uav_id": "UAV-050",
+  "name": "Reykjavik_Xray2",
+  "location": {
+    "lat": 64.1466,
+    "lon": -21.9426,
+    "alt": 4500
+  },
+  "type": "surveillance",
+  "status": "active",
+  "resources": {
+    "cpu": 40,
+    "bandwidth": 400,
+    "power": 1800,
+    "memory": 16384
+  },
+  "coverage_radius_km": 80,
+  "connected_satellites": [],
+  "connected_ground_stations": [],
+  "connected_sea_stations": []
+}]
